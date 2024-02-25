@@ -7,20 +7,6 @@ FROM custom_behavior
 GROUP BY generation;
 
 
-# Before moving forward, let me explain the code. 
-
-#SUM(CASE WHEN Purchase_Frequency = "Few times a month" THEN 1 ELSE 0 END): 
-#This part of the code will count every record of = "Few times a month" in the Purchase_Frequency column and will summarize it.
-#(SUM(CASE WHEN Purchase_Frequency = "Few times a month" THEN 1 ELSE 0 END)/COUNT(*)) : 
-#The result will be divided by the amount of cells in the column. Let’s say there are 300 cells in the Purchase_Frequency column and 80 records of "Few times a month" so the result will be 80/300= 0,26666
-#ROUND((SUM(CASE WHEN Purchase_Frequency = "Few times a month" THEN 1 ELSE 0 END)/COUNT(*))*100,1):
-# Then 0,26666 *100 to obtain a real percentage. the ROUND function rounds the number to one decimal place.
-#CONCAT(ROUND((SUM(CASE WHEN Purchase_Frequency = "Few times a month" THEN 1 ELSE 0 END)/COUNT(*))*100,1),'%') : 
-#The concat function add the percentage sign at the end of the result. 
-
-#This is the same logic for all the others codes.
-
-
 #2 Which product categories are most popular among Amazon users?
 SELECT COUNT(*) AS Users,
     generation,
